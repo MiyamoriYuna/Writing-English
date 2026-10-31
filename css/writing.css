@@ -3,71 +3,247 @@
    英作文画面
 ========================= */
 
-.choice-card {
-  display: grid;
-  grid-template-columns: 54px 1fr auto;
+/* 問題作成メニュー */
 
-  align-items: center;
-  gap: 15px;
-
-  padding: 20px;
-  margin-bottom: 14px;
-
-  border: 1px solid var(--line);
-  border-radius: 18px;
+.writing-menu {
+  padding: 22px;
 
   background: white;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+
   box-shadow: var(--shadow);
 }
 
-.large-icon {
-  width: 48px;
-  height: 48px;
+.writing-menu h2 {
+  margin: 0 0 7px;
+  font-size: 19px;
+}
 
+.writing-menu > p {
+  margin: 0 0 22px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* 選択項目 */
+
+.filter-section {
+  margin-bottom: 24px;
+}
+
+.filter-section h3 {
+  margin: 0 0 12px;
+  font-size: 15px;
+}
+
+.checkbox-grid {
   display: grid;
-  place-items: center;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
 
-  border-radius: 15px;
+.filter-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 13px;
+
+  background: #f7fbfd;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+
+  cursor: pointer;
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.filter-option:has(input:checked) {
+  background: var(--blue-light);
+  border-color: var(--blue);
+  color: var(--blue-dark);
+}
+
+.filter-option input {
+  width: 17px;
+  height: 17px;
+
+  accent-color: var(--blue-dark);
+
+  cursor: pointer;
+}
+
+/* 問題作成ボタン */
+
+.generate-button {
+  width: 100%;
+  padding: 15px;
+  font-size: 15px;
+}
+
+/* エラーメッセージ */
+
+.error-message {
+  margin: 12px 0 0 !important;
+  color: #d94b5b !important;
+  font-size: 12px !important;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+/* =========================
+   作成した問題
+========================= */
+
+.question-result {
+  margin-top: 22px;
+  padding: 22px;
+
+  background: white;
+  border: 1px solid #d6ebf5;
+  border-radius: 20px;
+
+  box-shadow: var(--shadow);
+}
+
+.result-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.result-label {
+  color: var(--blue-dark);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .12em;
+}
+
+#question-number {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* 問題のタグ */
+
+.question-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0;
+}
+
+.question-tags span {
+  padding: 6px 12px;
+
+  border-radius: 20px;
 
   background: var(--blue-light);
   color: var(--blue-dark);
 
-  font-size: 26px;
+  font-size: 11px;
+  font-weight: 700;
 }
 
-.choice-card h2,
-.test-preview h2 {
-  margin: 0 0 6px;
+/* 問題文 */
+
+.question-content {
+  padding: 20px;
+
+  border-radius: 15px;
+
+  background: #f7fbfd;
+}
+
+.question-content h2 {
+  margin: 0 0 13px;
+  font-size: 16px;
+}
+
+.question-content p {
+  margin: 0;
+
+  color: var(--text);
+
+  font-size: 18px;
+  font-weight: 650;
+  line-height: 1.8;
+}
+
+.question-note {
+  margin: 16px 0;
+
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+/* 別の問題ボタン */
+
+.another-button {
+  width: 100%;
+  padding: 13px;
+  font-size: 14px;
+}
+
+/* =========================
+   写真取り込み
+========================= */
+
+.writing-photo-section {
+  margin-top: 24px;
+  padding: 22px;
+
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+}
+
+.writing-photo-section h2 {
+  margin: 0 0 10px;
   font-size: 17px;
 }
 
-.choice-card p,
-.test-preview p {
-  margin: 0;
+.writing-photo-section p {
+  margin: 0 0 16px;
 
   color: var(--muted);
   font-size: 13px;
-  line-height: 1.65;
+  line-height: 1.7;
 }
 
-/* スマートフォン */
+/* =========================
+   スマートフォン
+========================= */
 
 @media (max-width: 520px) {
 
-  .choice-card {
-    grid-template-columns: 44px 1fr;
+  .writing-menu {
+    padding: 17px;
+  }
 
+  .checkbox-grid {
+    gap: 8px;
+  }
+
+  .filter-option {
+    padding: 11px 9px;
+    font-size: 12px;
+  }
+
+  .question-result {
+    padding: 17px;
+  }
+
+  .question-content {
     padding: 16px;
-    gap: 12px;
   }
 
-  .choice-card .large-icon {
-    width: 42px;
-    height: 42px;
-  }
-
-  .choice-card .secondary-button {
-    grid-column: 2;
-    justify-self: start;
+  .question-content p {
+    font-size: 16px;
   }
 }
