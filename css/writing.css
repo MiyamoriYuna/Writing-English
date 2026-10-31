@@ -1,0 +1,73 @@
+
+/* =========================
+   英作文画面
+========================= */
+
+.choice-card {
+  display: grid;
+  grid-template-columns: 54px 1fr auto;
+
+  align-items: center;
+  gap: 15px;
+
+  padding: 20px;
+  margin-bottom: 14px;
+
+  border: 1px solid var(--line);
+  border-radius: 18px;
+
+  background: white;
+  box-shadow: var(--shadow);
+}
+
+.large-icon {
+  width: 48px;
+  height: 48px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 15px;
+
+  background: var(--blue-light);
+  color: var(--blue-dark);
+
+  font-size: 26px;
+}
+
+.choice-card h2,
+.test-preview h2 {
+  margin: 0 0 6px;
+  font-size: 17px;
+}
+
+.choice-card p,
+.test-preview p {
+  margin: 0;
+
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+/* スマートフォン */
+
+@media (max-width: 520px) {
+
+  .choice-card {
+    grid-template-columns: 44px 1fr;
+
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .choice-card .large-icon {
+    width: 42px;
+    height: 42px;
+  }
+
+  .choice-card .secondary-button {
+    grid-column: 2;
+    justify-self: start;
+  }
+}
