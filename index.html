@@ -300,13 +300,50 @@
 
 
       <section class="page" id="page-lists" aria-labelledby="lists-title">
-        <div class="page-heading"><p class="eyebrow">REVIEW MATERIALS</p><h1 id="lists-title">学習リスト</h1><p>添削で見つかった内容を、種類ごとに整理します。</p></div>
-        <div class="list-category-grid">
-          <div class="category-card"><span>📖</span><h2>単語リスト</h2><p>スペル・意味を復習</p></div>
-          <div class="category-card"><span>✍️</span><h2>文法リスト</h2><p>文法のポイントを復習</p></div>
-          <div class="category-card"><span>🧩</span><h2>構文リスト</h2><p>英文の組み立て方を復習</p></div>
-        </div>
-        <p class="empty-state">学習リストは、添削機能の完成後にここへ保存されます。</p>
+        
+<section class="page" id="page-lists" aria-labelledby="lists-title">
+
+  <div class="page-heading">
+    <p class="eyebrow">REVIEW MATERIALS</p>
+    <h1 id="lists-title">学習リスト</h1>
+    <p>添削で見つかった内容を、種類ごとに整理します。</p>
+  </div>
+
+  <!-- 種類の切り替え -->
+  <div class="list-category-grid">
+
+    <button class="category-card active" data-list-type="spelling">
+      <span>📖</span>
+      <h2>単語リスト</h2>
+      <p>スペル・意味を復習</p>
+    </button>
+
+    <button class="category-card" data-list-type="grammar">
+      <span>✍️</span>
+      <h2>文法リスト</h2>
+      <p>文法のポイントを復習</p>
+    </button>
+
+    <button class="category-card" data-list-type="structure">
+      <span>🧩</span>
+      <h2>構文リスト</h2>
+      <p>英文の組み立て方を復習</p>
+    </button>
+
+  </div>
+
+  <!-- 学習内容 -->
+  <div id="learning-list" class="learning-list">
+    <p class="empty-state">学習データを読み込んでいます。</p>
+  </div>
+
+  <!-- 動作確認用 -->
+  <button id="add-sample-data" class="secondary-button" type="button">
+    サンプルデータを登録する
+  </button>
+
+</section>
+
       </section>
 
       <section class="page" id="page-tests" aria-labelledby="tests-title">
