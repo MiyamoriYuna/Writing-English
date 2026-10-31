@@ -247,3 +247,164 @@
     font-size: 16px;
   }
 }
+
+
+/* =========================
+   解答入力画面
+========================= */
+
+.answer-section {
+  margin-top: 24px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+}
+
+.answer-section h2 {
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+
+.answer-section > p {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.answer-section textarea {
+  width: 100%;
+  min-height: 140px;
+  resize: vertical;
+
+  padding: 15px;
+
+  border: 1px solid var(--line);
+  border-radius: 13px;
+
+  background: #fbfdfe;
+  color: var(--text);
+
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.answer-section textarea:focus {
+  outline: 2px solid var(--blue);
+  border-color: var(--blue);
+}
+
+.answer-footer {
+  margin: 7px 0 15px;
+  text-align: right;
+
+  color: var(--muted);
+  font-size: 11px;
+}
+
+/* =========================
+   添削結果
+========================= */
+
+.correction-result {
+  margin-top: 24px;
+  padding: 20px;
+
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+
+  box-shadow: var(--shadow);
+}
+
+.correction-heading h2 {
+  margin: 7px 0 18px;
+  font-size: 21px;
+}
+
+.correction-summary {
+  padding: 16px;
+  margin-bottom: 15px;
+
+  background: var(--blue-light);
+  border-radius: 13px;
+}
+
+.correction-summary h3,
+.correction-block h3 {
+  margin: 0 0 10px;
+  font-size: 15px;
+}
+
+.correction-summary p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* 添削項目 */
+
+.correction-block {
+  padding: 17px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.correction-block > p {
+  margin: 0;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+}
+
+/* 個別の間違い */
+
+.error-item {
+  padding: 12px;
+  margin-top: 10px;
+
+  background: #f7fbfd;
+  border-radius: 11px;
+}
+
+.error-item p {
+  margin: 5px 0;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.error-original {
+  color: #d65c67;
+}
+
+.error-correct {
+  color: #238d75;
+  font-weight: 700;
+}
+
+.error-explanation {
+  color: var(--muted);
+}
+
+/* 間違いがない場合 */
+
+.no-error {
+  color: #238d75;
+  font-size: 13px;
+  font-weight: 650;
+}
+
+/* 添削後の案内 */
+
+.correction-footer {
+  margin-top: 17px;
+  padding: 13px;
+
+  background: #f5fafc;
+  border-radius: 11px;
+}
+
+.correction-footer p {
+  margin: 0;
+
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
