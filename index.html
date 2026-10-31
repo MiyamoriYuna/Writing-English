@@ -163,37 +163,121 @@
 
   </div>
 
-  <!-- 作成した問題 -->
-  <div id="question-result"
-    class="question-result"
-    hidden>
+  
+<!-- 作成した問題 -->
+<div id="question-result" class="question-result" hidden>
 
-    <div class="result-header">
-      <span class="result-label">YOUR QUESTION</span>
-      <span id="question-number"></span>
+  <div class="result-header">
+    <span class="result-label">YOUR QUESTION</span>
+    <span id="question-number"></span>
+  </div>
+
+  <div class="question-tags">
+    <span id="question-category"></span>
+    <span id="question-difficulty"></span>
+  </div>
+
+  <!-- 問題文 -->
+  <div class="question-content">
+    <h2>問題</h2>
+    <p id="question-text"></p>
+  </div>
+
+  <div class="question-note">
+    問題を読んで、英語でどのように表現するか考えてみましょう。
+  </div>
+
+  <!-- 解答入力 -->
+  <div class="answer-section">
+
+    <h2>あなたの解答</h2>
+
+    <p>英文を入力してください。</p>
+
+    <textarea
+      id="answer-input"
+      placeholder="ここに英作文を入力してください..."
+      rows="6"
+    ></textarea>
+
+    <div class="answer-footer">
+      <span id="answer-count">0文字</span>
     </div>
 
-    <div class="question-tags">
-      <span id="question-category"></span>
-      <span id="question-difficulty"></span>
-    </div>
-
-    <div class="question-content">
-      <h2>問題</h2>
-      <p id="question-text"></p>
-    </div>
-
-    <div class="question-note">
-      問題を読んで、英語でどのように表現するか考えてみましょう。
-    </div>
-
-    <button id="another-question"
-      class="secondary-button another-button"
-      type="button">
-      別の問題を作成する
+    <button
+      id="submit-answer"
+      class="primary-button generate-button"
+      type="button"
+    >
+      添削する →
     </button>
 
+    <p id="answer-error" class="error-message" hidden></p>
+
   </div>
+
+  <!-- 添削結果 -->
+  <div id="correction-result" class="correction-result" hidden>
+
+    <div class="correction-heading">
+      <span class="result-label">CORRECTION RESULT</span>
+      <h2>添削結果</h2>
+    </div>
+
+    <!-- 総合評価 -->
+    <div class="correction-summary">
+      <h3>総合コメント</h3>
+      <p id="overall-comment"></p>
+    </div>
+
+    <!-- 正しい英文 -->
+    <div class="correction-block">
+      <h3>正しい英文</h3>
+      <p id="corrected-answer"></p>
+    </div>
+
+    <!-- スペルミス -->
+    <div class="correction-block">
+      <h3>① スペルミス</h3>
+      <div id="spelling-errors"></div>
+    </div>
+
+    <!-- 文法ミス -->
+    <div class="correction-block">
+      <h3>② 文法ミス</h3>
+      <div id="grammar-errors"></div>
+    </div>
+
+    <!-- 構文ミス -->
+    <div class="correction-block">
+      <h3>③ 構文ミス</h3>
+      <div id="structure-errors"></div>
+    </div>
+
+    <!-- 言い換え -->
+    <div class="correction-block">
+      <h3>④ 言い換え表現</h3>
+      <div id="alternative-expressions"></div>
+    </div>
+
+    <div class="correction-footer">
+      <p>
+        今回の間違いは、今後の学習リストに登録できるようにします。
+      </p>
+    </div>
+
+  </div>
+
+  <button
+    id="another-question"
+    class="secondary-button another-button"
+    type="button"
+  >
+    別の問題を作成する
+  </button>
+
+</div>
+
 
   <!-- 今後追加する機能 -->
   <div class="writing-photo-section">
