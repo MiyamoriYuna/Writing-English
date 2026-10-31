@@ -66,18 +66,154 @@
         </section>
       </section>
 
-      <section class="page" id="page-writing" aria-labelledby="writing-title">
-        <div class="page-heading"><p class="eyebrow">ENGLISH WRITING</p><h1 id="writing-title">英作文</h1><p>問題に挑戦する方法を選んでください。</p></div>
-        <div class="choice-card">
-          <span class="large-icon">✎</span><div><h2>問題を作成する</h2><p>問題の系統や難易度を選んで、自分に合った英作文問題に挑戦します。</p></div>
-          <button class="secondary-button" type="button" disabled>準備中</button>
-        </div>
-        <div class="choice-card">
-          <span class="large-icon">▧</span><div><h2>問題の写真を取り込む</h2><p>問題集などの写真を取り込み、その問題に解答します。</p></div>
-          <button class="secondary-button" type="button" disabled>準備中</button>
-        </div>
-        <p class="notice">※ 問題作成・写真読み取り・添削機能は今後の段階で追加します。</p>
-      </section>
+      
+<!-- 英作文画面 -->
+<section class="page" id="page-writing">
+
+  <div class="page-heading">
+    <p class="eyebrow">ENGLISH WRITING</p>
+    <h1>英作文</h1>
+    <p>自分に合った英作文問題に挑戦しましょう。</p>
+  </div>
+
+  <!-- 問題作成メニュー -->
+  <div class="writing-menu">
+
+    <h2>問題を作成する</h2>
+    <p>問題の系統と難易度を選択してください。</p>
+
+    <!-- 問題の系統 -->
+    <div class="filter-section">
+
+      <h3>① 問題の系統</h3>
+
+      <div class="checkbox-grid">
+
+        <label class="filter-option">
+          <input type="checkbox" name="category"
+            value="日常英会話" checked>
+          <span>日常英会話</span>
+        </label>
+
+        <label class="filter-option">
+          <input type="checkbox" name="category"
+            value="学校生活">
+          <span>学校生活</span>
+        </label>
+
+        <label class="filter-option">
+          <input type="checkbox" name="category"
+            value="旅行・文化">
+          <span>旅行・文化</span>
+        </label>
+
+        <label class="filter-option">
+          <input type="checkbox" name="category"
+            value="その他">
+          <span>その他</span>
+        </label>
+
+      </div>
+    </div>
+
+    <!-- 難易度 -->
+    <div class="filter-section">
+
+      <h3>② 難易度</h3>
+
+      <div class="checkbox-grid">
+
+        <label class="filter-option">
+          <input type="checkbox" name="difficulty"
+            value="易しい">
+          <span>易しい</span>
+        </label>
+
+        <label class="filter-option">
+          <input type="checkbox" name="difficulty"
+            value="普通" checked>
+          <span>普通</span>
+        </label>
+
+        <label class="filter-option">
+          <input type="checkbox" name="difficulty"
+            value="やや難しい">
+          <span>やや難しい</span>
+        </label>
+
+        <label class="filter-option">
+          <input type="checkbox" name="difficulty"
+            value="難しい">
+          <span>難しい</span>
+        </label>
+
+      </div>
+    </div>
+
+    <!-- 問題作成ボタン -->
+    <button id="generate-question"
+      class="primary-button generate-button"
+      type="button">
+      問題を作成する →
+    </button>
+
+    <p id="filter-error" class="error-message" hidden>
+      問題の系統と難易度をそれぞれ1つ以上選択してください。
+    </p>
+
+  </div>
+
+  <!-- 作成した問題 -->
+  <div id="question-result"
+    class="question-result"
+    hidden>
+
+    <div class="result-header">
+      <span class="result-label">YOUR QUESTION</span>
+      <span id="question-number"></span>
+    </div>
+
+    <div class="question-tags">
+      <span id="question-category"></span>
+      <span id="question-difficulty"></span>
+    </div>
+
+    <div class="question-content">
+      <h2>問題</h2>
+      <p id="question-text"></p>
+    </div>
+
+    <div class="question-note">
+      問題を読んで、英語でどのように表現するか考えてみましょう。
+    </div>
+
+    <button id="another-question"
+      class="secondary-button another-button"
+      type="button">
+      別の問題を作成する
+    </button>
+
+  </div>
+
+  <!-- 今後追加する機能 -->
+  <div class="writing-photo-section">
+
+    <h2>問題の写真を取り込む</h2>
+
+    <p>
+      問題集やプリントの写真を取り込み、
+      その問題に挑戦できるようにする予定です。
+    </p>
+
+    <button class="secondary-button"
+      type="button" disabled>
+      第4段階で実装予定
+    </button>
+
+  </div>
+
+</section>
+
 
       <section class="page" id="page-lists" aria-labelledby="lists-title">
         <div class="page-heading"><p class="eyebrow">REVIEW MATERIALS</p><h1 id="lists-title">学習リスト</h1><p>添削で見つかった内容を、種類ごとに整理します。</p></div>
