@@ -1,0 +1,162 @@
+
+/* =========================
+   学習リスト
+========================= */
+
+.list-category-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: 12px;
+}
+
+.category-card {
+  padding: 17px 12px;
+
+  text-align: center;
+
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
+
+.category-card > span {
+  font-size: 28px;
+}
+
+.category-card h2 {
+  margin: 10px 0 5px;
+  font-size: 14px;
+}
+
+.category-card p {
+  margin: 0;
+
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+/* リストが空の場合 */
+
+.empty-state {
+  margin-top: 18px;
+  padding: 25px;
+
+  text-align: center;
+
+  border: 1px dashed #c9e2ed;
+  border-radius: 18px;
+
+  background: #fbfeff;
+
+  color: var(--muted);
+  line-height: 1.7;
+  font-size: 13px;
+}
+
+/* =========================
+   テスト画面
+========================= */
+
+.test-preview {
+  margin-top: 18px;
+  padding: 25px;
+
+  text-align: center;
+
+  border: 1px dashed #c9e2ed;
+  border-radius: 18px;
+
+  background: #fbfeff;
+
+  color: var(--muted);
+  line-height: 1.7;
+  font-size: 13px;
+}
+
+.test-preview {
+  border-style: solid;
+  background: white;
+  box-shadow: var(--shadow);
+}
+
+.test-preview .large-icon {
+  margin: 0 auto 14px;
+}
+
+.test-preview p {
+  max-width: 420px;
+  margin: 0 auto 15px;
+}
+
+.progress-note {
+  margin: 16px auto;
+  max-width: 440px;
+
+  padding: 12px;
+
+  border-radius: 12px;
+
+  background: var(--blue-light);
+  color: #47788e;
+
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* =========================
+   設定画面
+========================= */
+
+.settings-card {
+  padding: 0 18px;
+
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 17px;
+}
+
+.settings-card > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+
+  padding: 17px 0;
+
+  font-size: 13px;
+}
+
+.settings-card > div + div {
+  border-top: 1px solid #edf2f5;
+}
+
+.settings-card strong {
+  color: var(--text);
+}
+
+.settings-card span {
+  color: var(--muted);
+  text-align: right;
+}
+
+/* スマートフォン */
+
+@media (max-width: 480px) {
+
+  .list-category-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .category-card {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    text-align: left;
+  }
+
+  .category-card h2 {
+    margin: 0 0 3px;
+  }
+}
