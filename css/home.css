@@ -1,0 +1,249 @@
+
+/* =========================
+   ホーム画面
+========================= */
+
+.welcome-panel {
+  min-height: 230px;
+  padding: 28px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 18px;
+
+  overflow: hidden;
+
+  border-radius: 24px;
+
+  background: linear-gradient(
+    115deg,
+    #e2f5fc,
+    #f4fbfe 72%
+  );
+
+  border: 1px solid #d9eef7;
+}
+
+.welcome-panel h1 {
+  margin: 0 0 10px;
+
+  font-size: clamp(25px, 5vw, 34px);
+  line-height: 1.35;
+  letter-spacing: .01em;
+}
+
+.welcome-copy {
+  max-width: 430px;
+  margin: 0 0 20px;
+
+  color: #647987;
+  line-height: 1.7;
+  font-size: 14px;
+}
+
+.welcome-illustration {
+  flex: 0 0 auto;
+
+  width: 112px;
+  height: 112px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 34px;
+
+  background: rgba(255,255,255,.78);
+
+  font-size: 62px;
+
+  transform: rotate(7deg);
+
+  box-shadow: var(--shadow);
+}
+
+/* =========================
+   セクション
+========================= */
+
+.section-block {
+  margin-top: 32px;
+}
+
+.section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+
+  margin-bottom: 15px;
+}
+
+.section-heading h2 {
+  margin: 0;
+  font-size: 21px;
+}
+
+/* =========================
+   学習メニュー
+========================= */
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 12px;
+}
+
+.menu-card {
+  min-height: 158px;
+  position: relative;
+
+  padding: 17px;
+
+  text-align: left;
+
+  border: 1px solid var(--line);
+  border-radius: 17px;
+
+  background: white;
+
+  box-shadow: var(--shadow);
+
+  cursor: pointer;
+  color: var(--text);
+}
+
+.menu-card:active {
+  transform: scale(.99);
+}
+
+.menu-icon {
+  width: 38px;
+  height: 38px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 12px;
+
+  font-size: 21px;
+  margin-bottom: 12px;
+}
+
+.menu-icon.blue {
+  background: #e4f5fc;
+  color: #2699c8;
+}
+
+.menu-icon.mint {
+  background: #e6f7f2;
+  color: #369c83;
+}
+
+.menu-icon.lavender {
+  background: #f0edfc;
+  color: #8573c5;
+}
+
+.menu-icon.gray {
+  background: #eef2f5;
+  color: #687986;
+}
+
+.menu-title {
+  display: block;
+  font-weight: 800;
+  font-size: 15px;
+}
+
+.menu-description {
+  display: block;
+
+  margin-top: 5px;
+  padding-right: 8px;
+
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.card-arrow {
+  position: absolute;
+  right: 15px;
+  top: 18px;
+
+  color: #9ab6c4;
+}
+
+/* =========================
+   学習の流れ
+========================= */
+
+.steps-card {
+  padding: 8px 18px;
+
+  border-radius: 18px;
+
+  background: white;
+  border: 1px solid var(--line);
+}
+
+.step {
+  display: flex;
+  gap: 15px;
+
+  padding: 14px 0;
+  align-items: flex-start;
+}
+
+.step + .step {
+  border-top: 1px solid #edf2f5;
+}
+
+.step > span {
+  color: var(--blue-dark);
+  background: var(--blue-light);
+
+  border-radius: 10px;
+
+  padding: 7px 8px;
+
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.step strong {
+  font-size: 14px;
+}
+
+.step p {
+  margin: 4px 0 0;
+
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* =========================
+   スマートフォン
+========================= */
+
+@media (max-width: 420px) {
+
+  .welcome-panel {
+    padding: 22px 18px;
+  }
+
+  .welcome-illustration {
+    width: 72px;
+    height: 72px;
+
+    border-radius: 22px;
+    font-size: 42px;
+  }
+
+  .menu-card {
+    padding: 13px;
+  }
+}
