@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#e8f6fc">
+  <title>英作文トレーニング</title>
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/writing.css">
+  <link rel="stylesheet" href="css/study.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="app-header">
+      <a class="brand" href="#" data-page-link="home" aria-label="ホームへ">
+        <span class="brand-icon">✎</span>
+        <span>英作文トレーニング</span>
+      </a>
+      <button class="icon-button" type="button" aria-label="設定" data-page-link="settings">⚙</button>
+    </header>
+
+    <main id="app-main">
+      <section class="page active" id="page-home" aria-labelledby="home-title">
+        <div class="welcome-panel">
+          <div>
+            <p class="eyebrow">ENGLISH WRITING</p>
+            <h1 id="home-title">書いて、学んで、<br>英作文を得意に。</h1>
+            <p class="welcome-copy">問題に挑戦して、間違いを次の学習につなげよう。</p>
+            <button class="primary-button" type="button" data-page-link="writing">英作文を始める <span>→</span></button>
+          </div>
+          <div class="welcome-illustration" aria-hidden="true">📝</div>
+        </div>
+
+        <section class="section-block">
+          <div class="section-heading">
+            <div><p class="eyebrow">LEARNING MENU</p><h2>学習メニュー</h2></div>
+          </div>
+          <div class="menu-grid">
+            <button class="menu-card" type="button" data-page-link="writing">
+              <span class="menu-icon blue">✎</span><span class="menu-title">英作文</span>
+              <span class="menu-description">問題作成・写真の取り込み・添削</span><span class="card-arrow">→</span>
+            </button>
+            <button class="menu-card" type="button" data-page-link="lists">
+              <span class="menu-icon mint">▤</span><span class="menu-title">学習リスト</span>
+              <span class="menu-description">単語・文法・構文を確認</span><span class="card-arrow">→</span>
+            </button>
+            <button class="menu-card" type="button" data-page-link="tests">
+              <span class="menu-icon lavender">✓</span><span class="menu-title">テスト</span>
+              <span class="menu-description">覚えた内容を入力して復習</span><span class="card-arrow">→</span>
+            </button>
+            <button class="menu-card" type="button" data-page-link="settings">
+              <span class="menu-icon gray">⚙</span><span class="menu-title">設定</span>
+              <span class="menu-description">アプリの設定</span><span class="card-arrow">→</span>
+            </button>
+          </div>
+        </section>
+
+        <section class="section-block">
+          <div class="section-heading"><div><p class="eyebrow">YOUR STUDY</p><h2>学習の流れ</h2></div></div>
+          <div class="steps-card">
+            <div class="step"><span>01</span><div><strong>問題に挑戦</strong><p>自分で問題を作るか、写真から取り込む。</p></div></div>
+            <div class="step"><span>02</span><div><strong>解答を添削</strong><p>英文の間違いや、より自然な表現を確認する。</p></div></div>
+            <div class="step"><span>03</span><div><strong>復習して定着</strong><p>単語・文法・構文をリストにして繰り返し学ぶ。</p></div></div>
+          </div>
+        </section>
+      </section>
+
+      <section class="page" id="page-writing" aria-labelledby="writing-title">
+        <div class="page-heading"><p class="eyebrow">ENGLISH WRITING</p><h1 id="writing-title">英作文</h1><p>問題に挑戦する方法を選んでください。</p></div>
+        <div class="choice-card">
+          <span class="large-icon">✎</span><div><h2>問題を作成する</h2><p>問題の系統や難易度を選んで、自分に合った英作文問題に挑戦します。</p></div>
+          <button class="secondary-button" type="button" disabled>準備中</button>
+        </div>
+        <div class="choice-card">
+          <span class="large-icon">▧</span><div><h2>問題の写真を取り込む</h2><p>問題集などの写真を取り込み、その問題に解答します。</p></div>
+          <button class="secondary-button" type="button" disabled>準備中</button>
+        </div>
+        <p class="notice">※ 問題作成・写真読み取り・添削機能は今後の段階で追加します。</p>
+      </section>
+
+      <section class="page" id="page-lists" aria-labelledby="lists-title">
+        <div class="page-heading"><p class="eyebrow">REVIEW MATERIALS</p><h1 id="lists-title">学習リスト</h1><p>添削で見つかった内容を、種類ごとに整理します。</p></div>
+        <div class="list-category-grid">
+          <div class="category-card"><span>📖</span><h2>単語リスト</h2><p>スペル・意味を復習</p></div>
+          <div class="category-card"><span>✍️</span><h2>文法リスト</h2><p>文法のポイントを復習</p></div>
+          <div class="category-card"><span>🧩</span><h2>構文リスト</h2><p>英文の組み立て方を復習</p></div>
+        </div>
+        <p class="empty-state">学習リストは、添削機能の完成後にここへ保存されます。</p>
+      </section>
+
+      <section class="page" id="page-tests" aria-labelledby="tests-title">
+        <div class="page-heading"><p class="eyebrow">PRACTICE</p><h1 id="tests-title">テスト</h1><p>キーボードで入力して、覚えた内容を確認します。</p></div>
+        <div class="test-preview">
+          <span class="large-icon">⌨</span><h2>くり返しテスト</h2>
+          <p>単語・文法・構文をテスト形式で復習できるようにします。</p>
+          <div class="progress-note">3回連続正解でリストから自動的に卒業する仕組みを予定しています。</div>
+          <button class="secondary-button" type="button" disabled>準備中</button>
+        </div>
+      </section>
+
+      <section class="page" id="page-settings" aria-labelledby="settings-title">
+        <div class="page-heading"><p class="eyebrow">SETTINGS</p><h1 id="settings-title">設定</h1><p>アプリの基本情報</p></div>
+        <div class="settings-card"><div><strong>アプリ名</strong><span>英作文トレーニング</span></div><div><strong>デザイン</strong><span>水色・白</span></div><div><strong>保存方式（予定）</strong><span>IndexedDB</span></div></div>
+        <p class="notice">設定項目は必要に応じて追加していきます。</p>
+      </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="メインナビゲーション">
+      <button class="nav-item active" type="button" data-page-link="home"><span>⌂</span><small>ホーム</small></button>
+      <button class="nav-item" type="button" data-page-link="writing"><span>✎</span><small>英作文</small></button>
+      <button class="nav-item" type="button" data-page-link="lists"><span>▤</span><small>学習リスト</small></button>
+      <button class="nav-item" type="button" data-page-link="tests"><span>✓</span><small>テスト</small></button>
+      <button class="nav-item" type="button" data-page-link="settings"><span>⚙</span><small>設定</small></button>
+    </nav>
+  </div>
+  <script src="js/app.js"></script>
+  <script src="js/home.js"></script>
+  <script src="js/writing.js"></script>
+  <script src="js/correction.js"></script>
+  <script src="js/study.js"></script>
+  <script src="js/db.js"></script>
+</body>
+</html>
