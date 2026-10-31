@@ -9,58 +9,44 @@ const CORRECTION_API_URL = "/api/correct";
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  const answerInput =
-    document.getElementById("answer-input");
-
-  const answerCount =
-    document.getElementById("answer-count");
-
-  const submitButton =
-    document.getElementById("submit-answer");
-
-  const answerError =
-    document.getElementById("answer-error");
-
-  const resultArea =
-    document.getElementById("correction-result");
-
+  // HTMLの要素を取得
+  const answerInput = document.getElementById("answer-input");
+  const answerCount = document.getElementById("answer-count");
+  const submitButton = document.getElementById("submit-answer");
+  const answerError = document.getElementById("answer-error");
+  const resultArea = document.getElementById("correction-result");
 
   // =========================
   // 文字数の表示
   // =========================
 
   answerInput.addEventListener("input", () => {
-
-    answerCount.textContent =
-      `${answerInput.value.length}文字`;
-
+    answerCount.textContent = `${answerInput.value.length}文字`;
   });
 
 
   // =========================
-  // 添削結果を表示する関数
+  // 間違いの表示
   // =========================
 
   function displayErrors(elementId, errors) {
 
-    const container =
-      document.getElementById(elementId);
+    const container = document.getElementById(elementId);
 
     container.replaceChildren();
 
+    // 間違いがない場合
     if (!Array.isArray(errors) || errors.length === 0) {
 
       const message = document.createElement("p");
-
       message.className = "no-error";
       message.textContent = "この項目に間違いはありません。";
 
       container.appendChild(message);
-
       return;
     }
 
-
+    // 間違いを1つずつ表示
     errors.forEach((error) => {
 
       const item = document.createElement("div");
@@ -81,64 +67,91 @@ document.addEventListener("DOMContentLoaded", () => {
       explanation.textContent =
         `解説：${error.explanation || "解説なし"}`;
 
-      item.append(
-        original,
-        corrected,
-        explanation
-      );
-
+      item.append(original, corrected, explanation);
       container.appendChild(item);
-
     });
-
   }
 
 
   // =========================
-  // 添削結果を画面に反映
+  // 間違いを学習リストに保存
   // =========================
 
-  function displayCorrection(data) {
+  async function saveCorrectionErrors(data) {
 
+    // 保存する間違いの種類
+    const errorGroups = [
+      {
+        type: "spelling",
+        errors: data.spellingErrors
+      },
+      {
+        type: "grammar",
+        errors: data.grammarErrors
+      },
+      {
+        type: "structure",
+        errors: data.structureErrors
+      }
+    ];
+
+    // 種類ごとに保存
+    for (const group of errorGroups) {
+
+      if (!Array.isArray(group.errors)) {
+        continue;
+      }
+
+      for (const error of group.errors) {
+
+        // 必要な情報をデータベースに保存
+        await saveLearningItem({
+          type: group.type,
+          original: error.original || "",
+          corrected: error.corrected || "",
+          explanation: error.explanation || ""
+        });
+
+      }
+    }
+  }
+
+
+  // =========================
+  // 添削結果の表示
+  // =========================
+
+  async function displayCorrection(data) {
+
+    // 総合コメント
     document.getElementById("overall-comment").textContent =
       data.overallComment || "総合コメントはありません。";
 
+    // 修正後の英文
     document.getElementById("corrected-answer").textContent =
       data.correctedAnswer || "修正例がありません。";
 
+    // 各種類の間違い
+    displayErrors("spelling-errors", data.spellingErrors);
+    displayErrors("grammar-errors", data.grammarErrors);
 
-    // スペルミス
-    displayErrors(
-      "spelling-errors",
-      data.spellingErrors
-    );
-
-    // 文法ミス
-    displayErrors(
-      "grammar-errors",
-      data.grammarErrors
-    );
-
-    // 構文ミス
-    displayErrors(
-      "structureErrors",
-      data.structureErrors
-    );
+    // 構文エラー
+    displayErrors("structure-errors", data.structureErrors);
 
 
+    // =========================
     // 言い換え表現
+    // =========================
+
     const alternativeContainer =
       document.getElementById("alternative-expressions");
 
     alternativeContainer.replaceChildren();
 
-    if (
-      !Array.isArray(data.alternatives) ||
-      data.alternatives.length === 0
-    ) {
+    if (!Array.isArray(data.alternatives) ||
+        data.alternatives.length === 0) {
 
       const message = document.createElement("p");
-
       message.className = "no-error";
       message.textContent = "言い換え表現はありません。";
 
@@ -157,47 +170,50 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const explanation = document.createElement("p");
         explanation.className = "error-explanation";
-        explanation.textContent =
-          alternative.explanation || "";
+        explanation.textContent = alternative.explanation || "";
 
         item.append(sentence, explanation);
-
         alternativeContainer.appendChild(item);
 
       });
-
     }
 
+
+    // =========================
+    // 学習リストへの保存
+    // =========================
+
+    await saveCorrectionErrors(data);
+
+
+    // 添削結果を表示
     resultArea.hidden = false;
 
     resultArea.scrollIntoView({
       behavior: "smooth",
       block: "start"
     });
-
   }
 
 
   // =========================
-  // 添削を実行
+  // 添削ボタンを押したとき
   // =========================
 
   async function submitAnswer() {
 
     const answer = answerInput.value.trim();
 
-    // 空欄チェック
+    // 入力チェック
     if (!answer) {
 
-      answerError.textContent =
-        "解答を入力してください。";
-
+      answerError.textContent = "解答を入力してください。";
       answerError.hidden = false;
 
       return;
     }
 
-    // 現在表示されている問題を取得
+    // 問題の情報を取得
     const question =
       document.getElementById("question-text").textContent;
 
@@ -208,6 +224,7 @@ document.addEventListener("DOMContentLoaded", () => {
       document.getElementById("question-difficulty").textContent;
 
 
+    // 表示をリセット
     answerError.hidden = true;
     resultArea.hidden = true;
 
@@ -217,42 +234,38 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
 
-      // APIサーバーに解答を送信
-      const response = await fetch(
-        CORRECTION_API_URL,
-        {
-          method: "POST",
+      // 添削APIにデータを送信
+      const response = await fetch(CORRECTION_API_URL, {
 
-          headers: {
-            "Content-Type": "application/json"
-          },
+        method: "POST",
 
-          body: JSON.stringify({
+        headers: {
+          "Content-Type": "application/json"
+        },
 
-            question: question,
-            answer: answer,
-            category: category,
-            difficulty: difficulty
+        body: JSON.stringify({
+          question,
+          answer,
+          category,
+          difficulty
+        })
 
-          })
-
-        }
-      );
+      });
 
 
-      // 通信エラー
+      // 通信エラーの確認
       if (!response.ok) {
-        throw new Error(
-          `サーバーエラー：${response.status}`
-        );
+        throw new Error(`サーバーエラー：${response.status}`);
       }
 
 
       // 添削結果を取得
       const data = await response.json();
 
-      // 結果を表示
-      displayCorrection(data);
+
+      // 添削結果を表示・保存
+      await displayCorrection(data);
+
 
     } catch (error) {
 
@@ -263,20 +276,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
       answerError.hidden = false;
 
+
     } finally {
 
+      // ボタンを元に戻す
       submitButton.disabled = false;
       submitButton.textContent = "添削する →";
 
     }
-
   }
 
 
-  // ボタンにイベントを設定
-  submitButton.addEventListener(
-    "click",
-    submitAnswer
-  );
+  // 添削ボタンに処理を設定
+  submitButton.addEventListener("click", submitAnswer);
 
 });
